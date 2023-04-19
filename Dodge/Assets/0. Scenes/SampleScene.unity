@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 287904969}
   speed: 8
+  playerController: {fileID: 287904968}
 --- !u!54 &287904969
 Rigidbody:
   m_ObjectHideFlags: 0
