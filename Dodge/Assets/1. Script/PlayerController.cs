@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour  //컨트롤 + K + F: 스코프 정렬 //�
                             //getAxisRaw : 살짝만 움직여도 1로 고정
 
         //실제 이동 속도를 입력값과 이동 속력을 사용해 결정
-        float xSpeed = xInput * speed; //곱해야 플러스 마이너스 방향성을 가져간다.
+        float xSpeed = xInput * speed; //곱해야 + - 방향성을 가져간다.
         float zSpeed = zInput * speed;
 
         //Vector3 속도를 (xspeed, 0, zspped)로 생성 //Vector3:구조제(값형식), n개의 원소를 값형식으로 받아들인다.
@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour  //컨트롤 + K + F: 스코프 정렬 //�
         //rigidbody.velocity변수 (리지드바디의 속도:이미 가지고 있는 속성)에 newVelocity를 할당//velocity 이미 가지고 있는 속성이다.
         playerRigidbody.velocity = newVelocity;
     }
-
     public void Die()
     {
         //자신의 게임 오브젝트를 비활성화
