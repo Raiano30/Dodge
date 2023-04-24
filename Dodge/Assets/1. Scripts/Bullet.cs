@@ -13,9 +13,7 @@ public class Bullet : MonoBehaviour
                                     //Transform타입의 transform변수(vector3타입) 
                                     //vector3타입의 forward 앞방향, 값은 1 (0,0,1)            //로컬 좌표상 앞
                                     //bulletRigidbody.velocity = new Vector3(0, 0, 1)*speed; //글로벌 좌표상 앞
-
-        //3초 뒤에 자신의 게임 오브젝트 파괴
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 3f); //3초 뒤에 자신의 게임 오브젝트 파괴
     }
     //리지드바디가 충돌 메시지 발생 > OnCollision(), OnTrigger()발동 : 최소 하나 오브제는 리지드바디 가지고 있어야한다. 
     //트리거 충돌 시 자동 실행되는 메서드 // 오브제 중 하나 이상이 is Trigger 체크
@@ -26,12 +24,10 @@ public class Bullet : MonoBehaviour
         {
             //상대방 게임 오브젝트에서 PlayerController 컴포넌트 가져오기
             PlayerController playerController = other.GetComponent<PlayerController>(); //collider가 component를 상속받음, Component.getComponent<>()
-
             //상대방으로부터 PlayerController 컴포넌트를 가져오는 데 성공했다면
             if (playerController != null)
             {
-                //상대방 PlyaerController 컴포넌트의 Die() 메서드 실행
-                playerController.Die();
+                playerController.Die(); //상대방 PlyaerController 컴포넌트의 Die() 메서드 실행
             }
         }
     }
