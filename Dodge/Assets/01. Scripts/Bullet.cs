@@ -17,15 +17,15 @@ public class Bullet : MonoBehaviour
     }
     //리지드바디가 충돌 메시지 발생 > OnCollision(), OnTrigger()발동 : 최소 하나 오브제는 리지드바디 가지고 있어야한다. 
     //트리거 충돌 시 자동 실행되는 메서드 // 오브제 중 하나 이상이 is Trigger 체크
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other) //충돌이벤트, other 콜라이더 가져온다. 
     {
         //충돌한 상대방 게임 오브젝트가 Player 태그를 가진 경우
         if(other.tag == "Player") //collider가 component를 상속받음, component.tag변수
         {
             //상대방 게임 오브젝트에서 PlayerController 컴포넌트 가져오기
             PlayerController playerController = other.GetComponent<PlayerController>(); //collider가 component를 상속받음, Component.getComponent<>()
-            //상대방으로부터 PlayerController 컴포넌트를 가져오는 데 성공했다면
-            if (playerController != null)
+            
+            if (playerController != null) //상대방으로부터 PlayerController 컴포넌트 가져오는 데 성공했다면
             {
                 playerController.Die(); //상대방 PlyaerController 컴포넌트의 Die() 메서드 실행
             }

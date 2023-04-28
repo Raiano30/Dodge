@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour  //컨트롤 + K + F: 스코프 정렬 //�
     void Start()
     {
         //게임 오브젝트에서 Rigidbody 컴포넌트를 찾아 playerRigidbody에 할당
-        playerRigidbody = GetComponent<Rigidbody>(); //Get읽다, Set쓰다//자신의 오브제 중에서 찾음
+        playerRigidbody = GetComponent<Rigidbody>(); //Get읽다, Set쓰다 //자신의 오브제 중에서 찾음
     }
 
     void Update()
@@ -58,10 +58,12 @@ public class PlayerController : MonoBehaviour  //컨트롤 + K + F: 스코프 정렬 //�
     {
         //자신의 게임 오브젝트를 비활성화
         gameObject.SetActive(false); //gameObject: 변수(자기 자신을 가리킨다.), 학문적 프로퍼티(자동구현 프로퍼티)//SetActive()메서드
-        //ex. 컴포넌트 활성화, 비활성화
-        //playerController.enabled = true; //enabled:변수
+        //ex. 컴포넌트 활성화, 비활성화 //컴포넌트.enabled변수 = true;
         GameManager gameManager = FindObjectOfType<GameManager>();
-        //가져온 GameManager 오브젝트의 EndGame()메서드 실행
-        gameManager.EndGame();
+        //FindObjectOfType<GameManager>().EndGame();이렇게 가능하지만 예외처리하기 위해
+        if (gameManager != null)
+        {
+            gameManager.EndGame();
+        }
     }
 }

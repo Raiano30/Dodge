@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; //UI관련 라이브러리
+using UnityEngine.UI; //UI관련 라이브러리 - 메모리에 공간확보해서 상주를 시킨다.
 using UnityEngine.SceneManagement; // 씬 관리 관련 라이브러리
 
 public class GameManager : MonoBehaviour
@@ -9,6 +7,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameoverText; //게임오버 시 활성화할 텍스트 게임 오브젝트트
     public Text timeText;    //'생존 시간' 표시할 텍스트 컴포넌트
     public Text recordText;  //'최고 기록' 표시할 텍스트 컴포넌트
+    //public UnityEngine.UI.Text timetext2;// 라이브러리 직접적 명시법, 딱 한번 쓸때 호출 - 시간 소요
 
     private float surviveTime; //생존시간
     private bool isGameover;   //게임오버 상태
@@ -29,7 +28,7 @@ public class GameManager : MonoBehaviour
             //생존 시간 갱신
             surviveTime += Time.deltaTime;
             //갱신한 생존 시간을 timeText 텍스트 컴포넌트를 이용해 표시
-            timeText.text = "Time: " + (int)surviveTime;
+            timeText.text = "Time: " + (int)surviveTime; //int형변환
         }
         else //게임오버
         {
@@ -37,7 +36,11 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 //SampleScene 씬을 로드
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("SampleScene"); //DontDestroyOnLoad(): 설정한 오브젝트는 사라지지 않는다. 
+                                                       //동기식 로드, 비동기식 로드(오브젝트가 엄청 많으면)
+                                                       //LoadScene(): 씬이름 or 씬인덱스로 불러오기
+                                                       //파일 > 빌드세팅 > 씬등록에서 씬 이름 가져오는 거다. 
+                Input.GetAxis("Horizontal");//프리퍼런스
             }
         }
     }
